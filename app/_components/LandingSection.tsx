@@ -34,7 +34,7 @@ export function LandingSection() {
                     <Button
                       title="Explore Fields"
                       type="secondary"
-                      additionalStyles="w-52"
+                      additionalStyles="w-40 md:w-52"
                     />
                   </div>
                   <div className=" max-w-[90%] lg:max-w-3/4 flex items-center justify-between">

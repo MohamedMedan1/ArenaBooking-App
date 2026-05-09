@@ -20,7 +20,8 @@ export default async function FeaturedFieldsSection() {
             title="View All"
             icon={<HiArrowRight />}
             type="main"
-            additionalStyles="text-base justify-between !py-3 !px-5 hidden md:flex"
+            href="fields"
+            additionalStyles="text-base justify-between !py-3 !px-5 hidden md:flex md:mb-10 lg:mb-0"
           />
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">

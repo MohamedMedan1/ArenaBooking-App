@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { ReactNode } from "react";
 
-export default function Button({title,icon,type,additionalStyles}:{title:string,icon?:ReactNode,type:string,additionalStyles?:string}) {
+export default function Button({title,icon,type,additionalStyles,href}:{title:string,icon?:ReactNode,type:string,additionalStyles?:string,href?:string}) {
   const types: {[key: string]: string} = {
     primary: "bg-chart-4 w-36 text-chart-3 flex items-center gap-2 rounded-2xl hover:bg-chart-5",
     main: "bg-chart-2 w-40 text-white flex items-center gap-2 rounded-xl hover:bg-chart-2/80",
@@ -11,9 +12,11 @@ export default function Button({title,icon,type,additionalStyles}:{title:string,
   const btnType = types[type];
 
   return (
-    <button className={`cursor-pointer px-3 py-4 text-lg font-medium transition ${btnType} ${additionalStyles}`}>
+    <Link href={`/${href}`}>
+      <button className={`cursor-pointer px-3 py-4 text-lg font-medium transition ${btnType} ${additionalStyles}`}>
       {title}
       {icon}
     </button>
+    </Link>
   );
 }

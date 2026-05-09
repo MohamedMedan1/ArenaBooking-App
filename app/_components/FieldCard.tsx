@@ -6,7 +6,7 @@ export default function FieldCard({ field }: { field: Field }) {
   return (
     <div className="relative w-full h-96 rounded-2xl shadow-md hover:-translate-y-1.5 hover:shadow-2xl transition">
       
-      <div className="absolute right-3 top-3 bg-chart-3 rounded-full px-3 py-1 text-white text-sm font-semibold">{category.name}</div>
+      <div className="absolute right-3 top-3 bg-chart-2 rounded-full px-3 py-1 text-white text-sm font-semibold">{category.name}</div>
 
       <div
         className="w-full h-1/2 rounded-t-2xl"
