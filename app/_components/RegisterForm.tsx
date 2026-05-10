@@ -1,8 +1,9 @@
 "use client";
 import { useForm } from "react-hook-form";
-import Button from "./Button";
 import FormRow from "./FormRow";
 import SubmitButton from "./SubmitButton";
+import { signUpAction } from "../_services/actions";
+import { HiOutlineUser,HiOutlinePhone ,HiOutlineEnvelope, HiOutlineLockClosed } from "react-icons/hi2";
 
 interface registerFormInputs {
   name: string;
@@ -13,19 +14,22 @@ interface registerFormInputs {
 }
 
 export default function RegisterForm() {
-  const { register, handleSubmit, formState,getValues } = useForm<registerFormInputs>();
-  const { errors } = formState;
+  const { register, handleSubmit, formState, getValues } =
+    useForm<registerFormInputs>();
+  const { errors, isSubmitting } = formState;
 
-  function onSubmitFn(data: any) {
-    console.log(data);
+  async function onSubmitFn(data: any) {
+    const result = await signUpAction(data);
+    console.log(result);
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmitFn)} className="flex flex-col gap-7">
       <div className="grid md:grid-cols-2 gap-7">
         <FormRow
-          {...register("name",{
-            required: "This field is required"
+          icon={<HiOutlineUser className="text-gray-500" size={18} />}
+          {...register("name", {
+            required: "This field is required",
           })}
           error={errors?.name?.message}
           inputType="text"
@@ -33,6 +37,7 @@ export default function RegisterForm() {
           placeholder="Your name"
         />
         <FormRow
+          icon={<HiOutlinePhone  className="text-gray-500" size={18} />}
           {...register("phone", {
             required: "This field is required",
             minLength: {
@@ -45,8 +50,8 @@ export default function RegisterForm() {
             },
             pattern: {
               value: /^0(10|11|12|15)[0-9]{8}$/,
-              message:"Invalid Egyptian phone number"
-            }
+              message: "Invalid Egyptian phone number",
+            },
           })}
           error={errors?.phone?.message}
           inputType="phone"
@@ -54,6 +59,7 @@ export default function RegisterForm() {
           placeholder="Enter your phone number"
         />
         <FormRow
+          icon={<HiOutlineEnvelope className="text-gray-500" size={18} />}
           {...register("email", { required: "This field is required" })}
           error={errors?.email?.message}
           inputType="email"
@@ -61,6 +67,7 @@ export default function RegisterForm() {
           placeholder="your@email.com"
         />
         <FormRow
+          icon={<HiOutlineLockClosed className="text-gray-500" size={18} />}
           {...register("password", {
             required: "This field is required",
             minLength: {
@@ -78,13 +85,14 @@ export default function RegisterForm() {
           placeholder="Enter password"
         />
         <FormRow
+          icon={<HiOutlineLockClosed className="text-gray-500" size={18} />}
           {...register("passwordConfirm", {
             required: "This field is required",
             validate: (value) => {
               if (value !== getValues("password")) {
-                return "passwordConfirm doesn't match password"; 
+                return "passwordConfirm doesn't match password";
               }
-              return true; 
+              return true;
             },
           })}
           error={errors?.passwordConfirm?.message}
@@ -93,7 +101,7 @@ export default function RegisterForm() {
           placeholder="Confirm your password"
         />
       </div>
-      <SubmitButton title="Sign Up"/>
+      <SubmitButton title="Sign Up" isLoading={isSubmitting} />
     </form>
   );
 }

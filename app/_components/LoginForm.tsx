@@ -2,7 +2,8 @@
 
 import { useForm } from "react-hook-form";
 import FormRow from "./FormRow";
-import {loginAction} from "../_services/actions";
+import { loginAction } from "../_services/actions";
+import { HiOutlineEnvelope ,HiOutlineLockClosed  } from "react-icons/hi2";
 import SubmitButton from "./SubmitButton";
 
 interface LoginFormInputs {
@@ -12,7 +13,7 @@ interface LoginFormInputs {
 
 export default function LoginForm() {
   const { register, handleSubmit, formState} = useForm<LoginFormInputs>();
-  const {errors} = formState;
+  const {errors,isSubmitting} = formState;
 
   async function onSubmitFn(data: any) {
     const result = await loginAction(data);
@@ -23,6 +24,7 @@ export default function LoginForm() {
     <form className="flex flex-col gap-7" onSubmit={handleSubmit(onSubmitFn)}>
       <div className="space-y-5">
         <FormRow
+          icon={<HiOutlineEnvelope  className="text-gray-500" size={18}/>}
           {...register("email", { required: "This field is required" })}
           error={errors?.email?.message}
           inputType="email"
@@ -30,6 +32,7 @@ export default function LoginForm() {
           placeholder="your@email.com"
         />
         <FormRow
+          icon={<HiOutlineLockClosed  className="text-gray-500" size={18}/>}
           {...register("password", {
             required: "This field is required",
             minLength: {
@@ -49,7 +52,7 @@ export default function LoginForm() {
 
         <p className="text-end font-semibold text-chart-2">Forgot Password?</p>
       </div>
-      <SubmitButton title="SignIn"/>
+      <SubmitButton title="SignIn" isLoading={isSubmitting}/>
     </form>
   );
 }

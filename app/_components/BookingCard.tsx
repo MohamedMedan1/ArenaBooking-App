@@ -1,7 +1,7 @@
 import Button from "./Button";
 import { HiStar } from "react-icons/hi2";
 
-export default function BookingCard({ field }: { field: any }) {
+export default function BookingCard({ field,url }: { field: any,url:string }) {
   const {pricePerHour,rating} = field;
   return (
     <div className="flex flex-col gap-5 w-full h-fit bg-white shadow-md p-7 rounded-xl ">
@@ -12,7 +12,7 @@ export default function BookingCard({ field }: { field: any }) {
           <span className="text-gray-500">{rating} rating</span>
         </div>
       </div>
-      <Button title="Book Now" type="main" additionalStyles="w-full justify-center"/>
+      <Button title="Book Now" type="main" additionalStyles="w-full justify-center" href={url} />
       <p className="text-center text-gray-500 text-sm">Free cancellation up to 24 hours before</p>
     </div>
   );

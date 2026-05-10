@@ -1,7 +1,7 @@
 "use server"
 import { login, register } from "./apiClients"
 
-export async function createNewAccount(formData:any) {
+export async function signUpAction(formData:any) {
   const result = await register(formData);
   return result;
 }

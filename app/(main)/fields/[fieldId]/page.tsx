@@ -1,7 +1,7 @@
 import { getField } from "@/app/_services/apiFields";
 import { Label } from "@/app/_components/Label";
-import Container from "../../_components/Container";
-import BackBtn from "../../_components/BackBtn";
+import Container from "../../../_components/Container";
+import BackBtn from "../../../_components/BackBtn";
 import Image from "next/image";
 import {
   HiStar,
@@ -39,9 +39,7 @@ export default async function Page({
       icon: <HiMiniLightBulb className="text-chart-4" size={30} />,
     },
   ];
-
-  console.log(field);
-
+  
   return (
     <div className="mt-21 min-h-lvh grid grid-rows-2">
       <div className="w-full h-full relative after:absolute after:h-full after:w-full after:top-0 after:left-0 after:bg-black/40">
@@ -88,7 +86,7 @@ export default async function Page({
                 ))}
               </div>
             </div>
-            <BookingCard field={field} />
+            <BookingCard field={field} url={`/slots`} />
           </div>
         </Container>
       </div>

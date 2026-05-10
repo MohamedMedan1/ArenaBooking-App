@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { HiArrowLeft } from "react-icons/hi2";
 
-export default function BackBtn() {
+export default function BackBtn({fixed=false}:{fixed?:boolean}) {
   return (
-    <Link href="/fields" className="absolute top-10 left-10 z-20 cursor-pointer bg-white/90 hover:bg-white transition rounded-xl w-12 h-12 flex items-center justify-center ">
+    <Link href="/fields" className={`${fixed ?"":"absolute top-10 left-10 z-20 " } cursor-pointer bg-white/90 hover:bg-white transition rounded-xl w-12 h-12 flex items-center justify-center `}>
       <p>
         {" "}
         <HiArrowLeft size={25} />
