@@ -14,9 +14,9 @@ export default function Page() {
 
       <RegisterForm/>
 
-      <p className="text-center text-lg text-gray-600">
+      <p className="text-center text-lg text-secondary">
         Don&apos;t have an account?{" "}
-        <Link href="signUp" className="font-semibold text-chart-2">
+        <Link href="signUp" className="font-semibold text-brand-green">
           Sign Up
         </Link>
       </p>

@@ -31,7 +31,7 @@ export default function WhySection() {
   ];
 
   return (
-    <div className="my-30" id="features">
+    <div className="py-20 bg-background" id="features">
       <MainTitle
         title="Why Choose Arena Match?"
         description="We make sports field booking simple, secure, and hassle-free"
@@ -41,11 +41,11 @@ export default function WhySection() {
           {whyContents?.map((cur) => (
             <div
               key={cur.title}
-              className="text-center bg-gray-100/50 rounded-2xl p-8 flex flex-col items-center gap-5"
+              className="text-center bg-foreground rounded-2xl p-8 flex flex-col items-center gap-5"
             >
-              <div className="text-chart-2 bg-chart-2/10 p-4 rounded-xl">{cur.icon}</div>
-              <p className="font-bold text-xl">{cur.title}</p>
-              <span className="text-gray-700">{cur.content}</span>
+              <div className="text-brand-green bg-brand-green-card p-4 rounded-xl">{cur.icon}</div>
+              <p className="font-bold text-xl text-primary">{cur.title}</p>
+              <span className="text-secondary">{cur.content}</span>
             </div>
           ))}
         </div>

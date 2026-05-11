@@ -1,19 +1,40 @@
-import Button from "./Button";
-import { HiStar } from "react-icons/hi2";
+import Image from "next/image";
+import BookingCardFooter from "./BookingCardFooter";
+import StatusLabel from "./StatusLabel";
+import BookingCardDetails from "./BookingCardDetails";
 
-export default function BookingCard({ field,url }: { field: any,url:string }) {
-  const {pricePerHour,rating} = field;
+export default function BookingCard({ booking }: { booking: any }) {
+  const { field, bookingDate, startTime, endTime, totalPrice, status } =
+    booking!;
+  const { image, name } = field;
+
   return (
-    <div className="flex flex-col gap-5 w-full h-fit bg-white shadow-md p-7 rounded-xl ">
-      <div className="space-y-2">
-        <p className="font-bold text-3xl text-chart-2">${pricePerHour} <small className="font-normal text-base text-gray-400">/hour</small></p>
-        <div className="flex items-center gap-3">
-          <HiStar size={20} className="text-chart-4" />
-          <span className="text-gray-500">{rating} rating</span>
+    <div className="space-y-5 bg-white shadow rounded-2xl divide-y divide-gray-300">
+      <div className="flex flex-col gap-5 md:gap-0 md:flex-row justify-between p-7">
+        <div className="flex flex-col md:flex-row gap-5">
+          <Image
+            src={image}
+            alt="field-Booking-image"
+            width={200}
+            height={100}
+            quality={90}
+            className="rounded-2xl w-full md:w-fit object-cover"
+          />
+
+          <BookingCardDetails
+            name={name}
+            bookingDate={bookingDate}
+            startTime={startTime}
+            endTime={endTime}
+          />
         </div>
+        <StatusLabel label={status} />
       </div>
-      <Button title="Book Now" type="main" additionalStyles="w-full justify-center" href={url} />
-      <p className="text-center text-gray-500 text-sm">Free cancellation up to 24 hours before</p>
+      <BookingCardFooter
+        totalPrice={totalPrice}
+        fieldId={field._id}
+        bookingStatus={status}
+      />
     </div>
   );
 }

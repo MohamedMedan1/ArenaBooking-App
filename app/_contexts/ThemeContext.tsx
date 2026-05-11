@@ -1,7 +1,9 @@
 "use client";
 import {
   createContext,
+  Dispatch,
   ReactNode,
+  SetStateAction,
   useContext,
   useEffect,
   useMemo,
@@ -16,7 +18,7 @@ type ThemeProvideType = {
 
 interface ThemeContextType {
   theme: Theme;
-  setTheme: (t: Theme) => void;
+  setTheme: Dispatch<SetStateAction<Theme>>;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);

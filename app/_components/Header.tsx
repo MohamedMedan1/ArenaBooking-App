@@ -9,7 +9,7 @@ import MobileNav from "./MobileNav";
 export default function Header() {
   const [isOpen, setOpen] = useState<boolean>(false);
   return (
-    <header className="bg-background h-[85] border-b border-b-border w-full flex items-center fixed top-0 z-50">
+    <header className="bg-background h-[85] border-b border-b-foreground w-full flex items-center fixed top-0 z-50">
       <Container>
         <div className="flex items-center justify-between">
           <Logo />

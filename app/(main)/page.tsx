@@ -10,12 +10,12 @@ export default function Home() {
   return (
     <>
       <LandingSection />
-      <CategoriesSection />
       <WhySection />
+      <CategoriesSection />
       <HowSection />
       <FeaturedFieldsSection />
       <About />
-      {/* <ReadySection/> */}
+      <ReadySection />
     </>
   );
 }

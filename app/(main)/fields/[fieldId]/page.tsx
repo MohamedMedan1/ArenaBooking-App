@@ -11,7 +11,7 @@ import {
   HiMiniLightBulb,
 } from "react-icons/hi2";
 import DetailsCard from "@/app/_components/DetailsCard";
-import BookingCard from "@/app/_components/BookingCard";
+import ConfirmBookingCard from "@/app/_components/ConfirmBookingCard";
 
 export default async function Page({
   params,
@@ -26,22 +26,22 @@ export default async function Page({
     {
       title: "Sport",
       value: category.name,
-      icon: <HiAdjustmentsHorizontal className="text-chart-2" size={30} />,
+      icon: <HiAdjustmentsHorizontal className="text-brand-green" size={30} />,
     },
     {
       title: "Capacity",
       value: capacity,
-      icon: <HiMiniUserGroup className="text-chart-2" size={30} />,
+      icon: <HiMiniUserGroup className="text-brand-green" size={30} />,
     },
     {
       title: "Lighting",
       value: "Available",
-      icon: <HiMiniLightBulb className="text-chart-4" size={30} />,
+      icon: <HiMiniLightBulb className="text-brand-yellow" size={30} />,
     },
   ];
   
   return (
-    <div className="mt-21 min-h-lvh grid grid-rows-2">
+    <div className="bg-foreground mt-21 min-h-lvh grid grid-rows-2">
       <div className="w-full h-full relative after:absolute after:h-full after:w-full after:top-0 after:left-0 after:bg-black/40">
         <Image
           src={image}
@@ -54,13 +54,13 @@ export default async function Page({
         
         <BackBtn />
         <div className="absolute bottom-8 left-8 md:left-14 flex flex-col gap-5 z-20">
-          <Label styles="!bg-chart-2 !w-28 !py-1.5">
-            <p className="font-medium text-white text-sm">{category.name}</p>
+          <Label styles="!bg-brand-green !w-28 !py-1.5">
+            <p className="font-medium text-primary text-sm">{category.name}</p>
           </Label>
           <p className="text-4xl text-white font-bold tracking-wide">{name}</p>
           <div className="flex items-center gap-10">
             <div className="flex items-center gap-2">
-              <HiStar size={30} className="text-chart-4" />
+              <HiStar size={30} className="text-brand-yellow" />
               <span className="text-white text-xl font-medium">{rating}</span>
             </div>
             <div className="flex items-center gap-2">
@@ -76,7 +76,7 @@ export default async function Page({
           <div className="grid md:grid-cols-[2.5fr_1fr] gap-10">
             <div>
               <div className="w-fit">
-                <p className="text-3xl font-bold">Field Details</p>
+                <p className="text-3xl font-bold text-primary">Field Details</p>
                 <div className="mt-2 w-1/2 h-1 bg-chart-2 rounded-full"></div>
               </div>
 
@@ -86,7 +86,7 @@ export default async function Page({
                 ))}
               </div>
             </div>
-            <BookingCard field={field} url={`/slots`} />
+            <ConfirmBookingCard field={field} url={`fields/${fieldId}/slots`} />
           </div>
         </Container>
       </div>

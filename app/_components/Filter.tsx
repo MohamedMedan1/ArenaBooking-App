@@ -28,16 +28,16 @@ export default function Filter({
   }
   
   const baseStyles = "px-6 py-1.5 cursor-pointer font-semibold transition rounded-full";
-  const activeStyles = "text-white bg-chart-2";
-  const idleStyles = "hover:bg-gray-100/80";
+  const activeStyles = "text-white bg-brand-green";
+  const idleStyles = "text-secondary hover:bg-background";
 
   const category = searchParams.get(filterKey) || "all"; 
   
   return (
     <div className="flex flex-col gap-5">
       <div className="flex items-center gap-2">
-        <HiAdjustmentsHorizontal className="text-chart-2" size={23} />
-        <p className="text-black font-bold text-xl">Filter by{filterName}</p>
+        <HiAdjustmentsHorizontal className="text-brand-green" size={23} />
+        <p className="text-primary font-bold text-xl">Filter by{filterName}</p>
       </div>
 
       <ul className="flex flex-wrap items-center gap-5">

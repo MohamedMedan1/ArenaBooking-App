@@ -24,7 +24,7 @@ export default function LoginForm() {
     <form className="flex flex-col gap-7" onSubmit={handleSubmit(onSubmitFn)}>
       <div className="space-y-5">
         <FormRow
-          icon={<HiOutlineEnvelope  className="text-gray-500" size={18}/>}
+          icon={<HiOutlineEnvelope  className="text-secondary" size={18}/>}
           {...register("email", { required: "This field is required" })}
           error={errors?.email?.message}
           inputType="email"
@@ -32,7 +32,7 @@ export default function LoginForm() {
           placeholder="your@email.com"
         />
         <FormRow
-          icon={<HiOutlineLockClosed  className="text-gray-500" size={18}/>}
+          icon={<HiOutlineLockClosed  className="text-secondary" size={18}/>}
           {...register("password", {
             required: "This field is required",
             minLength: {
@@ -50,7 +50,7 @@ export default function LoginForm() {
           placeholder="Enter password"
         />
 
-        <p className="text-end font-semibold text-chart-2">Forgot Password?</p>
+        <p className="text-end font-semibold text-brand-green">Forgot Password?</p>
       </div>
       <SubmitButton title="SignIn" isLoading={isSubmitting}/>
     </form>

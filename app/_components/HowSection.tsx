@@ -31,7 +31,7 @@ export default function HowSection() {
     },
   ];
   return (
-    <div className="bg-gray-100 py-10" id="howItWorks">
+    <div className="bg-background py-20" id="howItWorks">
       <MainTitle
         title="How It Works"
         description="Book your perfect field in four simple steps"
@@ -41,14 +41,14 @@ export default function HowSection() {
           {howContents?.map((cur,i) => (
             <div
               key={cur.title}
-              className="text-center bg-white rounded-2xl p-10 flex flex-col items-center gap-5"
+              className="text-center bg-foreground rounded-2xl p-10 flex flex-col items-center gap-5"
             >
               <div className="relative text-white bg-linear-to-br from-[#10B981] to-[#1E3A8A] p-5 rounded-full">
                 {cur.icon}
-                <p className="absolute -top-3 -right-1 w-8 h-8 rounded-full flex justify-center items-center bg-chart-4 text-chart-3 font-bold">{i + 1}</p>
+                <p className="absolute -top-3 -right-1 w-8 h-8 rounded-full flex justify-center items-center bg-brand-yellow text-primary font-bold">{i + 1}</p>
               </div>
-              <p className="font-bold text-xl">{cur.title}</p>
-              <span className="text-gray-700">{cur.content}</span>
+              <p className="font-bold text-xl text-primary">{cur.title}</p>
+              <span className="text-secondary">{cur.content}</span>
             </div>
           ))}
         </div>

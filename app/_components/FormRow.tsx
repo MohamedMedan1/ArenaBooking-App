@@ -38,10 +38,10 @@ export default function FormRow({
   );
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-2">
       <label
         htmlFor={`${labelName}-${inputType}`}
-        className="font-semibold text-gray-700"
+        className="font-semibold text-primary"
       >
         {labelName}
       </label>
@@ -52,7 +52,7 @@ export default function FormRow({
           id={`${labelName}-${inputType}`}
           type={isVisible?"text":inputType}
           placeholder={placeholder}
-          className="w-full bg-gray-100 border border-gray-300 rounded-lg px-10 py-3 placeholder:text-sm placeholder:font-medium"
+          className="w-full bg-background border-[0.5px] font-medium text-primary border-brand-border rounded-lg px-10 py-3 placeholder:text-sm placeholder:text-secondary placeholder:font-medium"
         />
         {isPasswordType && (
           <span className="absolute top-1/2 -translate-y-1/2 right-3">

@@ -8,7 +8,7 @@ import FieldCard from "./FieldCard";
 export default async function FeaturedFieldsSection() {
   const fields = await getFields(5);
   return (
-    <div className="pt-10 pb-20" id="fields">
+    <div className="py-20 bg-foreground" id="fields">
       <Container>
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <MainTitle
