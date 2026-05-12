@@ -1,8 +1,11 @@
 "use client";
+import { useRouter } from "next/navigation";
 import FormRow from "./FormRow";
 import { HiLockClosed } from "react-icons/hi2";
 import SubmitButton from "./SubmitButton";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { changePasswordAction } from "../_services/actions";
 
 interface editprofileFormInputs {
   currentPassword: string;
@@ -11,11 +14,39 @@ interface editprofileFormInputs {
 }
 
 export default function ChangePasswordForm() {
-  const { register, formState } = useForm<editprofileFormInputs>();
-  const { errors } = formState;
+  const { register, formState, handleSubmit, getValues } =
+    useForm<editprofileFormInputs>();
+  const { errors, isSubmitting } = formState;
+  const router = useRouter();
+
+  async function onSubmitFn(formData: any) {
+    const toastId = toast.loading("Updating your Password...");
+
+    try {
+      const res = await changePasswordAction(formData);
+
+      if (res?.status === "success") {
+        toast.success("Your Password was updated successfully!", {
+          id: toastId,
+        });
+        setTimeout(() => {
+          router.push("/auth/login");
+        }, 1500);
+      } else {
+        toast.error(res?.message || "Failed to change password", {
+          id: toastId,
+        });
+      }
+    } catch (err) {
+      console.log("Error: ", err);
+      toast.error("Something went wrong. Please try again later.", {
+        id: toastId,
+      });
+    }
+  }
 
   return (
-    <form className="space-y-7">
+    <form className="space-y-7" onSubmit={handleSubmit(onSubmitFn)}>
       <div className="space-y-5">
         <FormRow
           {...register("currentPassword", {
@@ -40,9 +71,9 @@ export default function ChangePasswordForm() {
         <FormRow
           {...register("newPasswordConfirm", {
             required: "This field is required",
-            validate: (value) => {
-              return value
-            }
+            validate: (value) =>
+              value === getValues("newPassword") ||
+              "New Password must be equal to newPasswordConfirm",
           })}
           error={errors.newPasswordConfirm?.message}
           inputType="password"
@@ -51,7 +82,7 @@ export default function ChangePasswordForm() {
           placeholder="Confirm your new password"
         />
       </div>
-      <SubmitButton title="Update Password" isLoading={false} />
+      <SubmitButton title="Update Password" isLoading={isSubmitting} />
     </form>
   );
 }

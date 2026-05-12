@@ -17,13 +17,13 @@ export default function BookingCardDetails({
   const formatedTime = formatTime(startTime, endTime);
   return (
     <div className="space-y-4">
-      <p className="text-xl font-bold">{name}</p>
+      <p className="text-xl font-bold text-primary">{name}</p>
       <div className="space-y-2">
-        <div className="flex items-center gap-2 text-gray-500 ">
+        <div className="flex items-center gap-2 text-secondary ">
           <HiMiniCalendar size={20} />
           <span>{formatedDate}</span>
         </div>
-        <div className="flex items-center gap-2 text-gray-500 ">
+        <div className="flex items-center gap-2 text-secondary ">
           <HiOutlineClock size={20} />
           <span>{formatedTime}</span>
         </div>

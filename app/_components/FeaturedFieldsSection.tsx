@@ -4,6 +4,7 @@ import Button from "./Button";
 import { HiArrowRight } from "react-icons/hi2";
 import { getFields } from "../_services/apiFields";
 import FieldCard from "./FieldCard";
+import Link from "next/link";
 
 export default async function FeaturedFieldsSection() {
   const fields = await getFields(5);
@@ -26,15 +27,17 @@ export default async function FeaturedFieldsSection() {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
           {fields?.map((cur) => (
-            <FieldCard key={cur._id} field={cur} />
+            <Link key={cur._id} href={`fields/${cur._id}`}>
+              <FieldCard field={cur} />
+            </Link>
           ))}
         </div>
-          <Button
-            title="View All"
-            icon={<HiArrowRight />}
-            type="main"
-            additionalStyles="text-base justify-between !py-3 !px-5 md:hidden mt-10 flex mx-auto"
-          />
+        <Button
+          title="View All"
+          icon={<HiArrowRight />}
+          type="main"
+          additionalStyles="text-base justify-between !py-3 !px-5 md:hidden mt-10 flex mx-auto"
+        />
       </Container>
     </div>
   );

@@ -5,6 +5,8 @@ import FormRow from "./FormRow";
 import { loginAction } from "../_services/actions";
 import { HiOutlineEnvelope ,HiOutlineLockClosed  } from "react-icons/hi2";
 import SubmitButton from "./SubmitButton";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 interface LoginFormInputs {
   email: string;
@@ -12,12 +14,34 @@ interface LoginFormInputs {
 }
 
 export default function LoginForm() {
+  const router = useRouter();
   const { register, handleSubmit, formState} = useForm<LoginFormInputs>();
   const {errors,isSubmitting} = formState;
 
-  async function onSubmitFn(data: any) {
-    const result = await loginAction(data);
-    console.log(result);
+  async function onSubmitFn(formData: any) {
+    const toastId = toast.loading("Verifying your credentials...");
+
+    try {
+      const res = await loginAction(formData);
+
+      if (res?.status === "success") {
+        toast.success("Your login successfully!", {
+          id: toastId,
+        });
+        setTimeout(() => {
+          router.push("/fields");
+        }, 1500);
+      } else {
+        toast.error(res?.message || "Failed to login", {
+          id: toastId,
+        });
+      }
+    } catch (err) {
+      console.log("Error: ", err);
+      toast.error("Something went wrong. Please try again later.", {
+        id: toastId,
+      });
+    }
   }
 
   return (

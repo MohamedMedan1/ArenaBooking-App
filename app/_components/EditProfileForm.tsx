@@ -3,6 +3,8 @@ import FormRow from "./FormRow";
 import { HiOutlineUser, HiOutlineEnvelope, HiPhone } from "react-icons/hi2";
 import SubmitButton from "./SubmitButton";
 import { useForm } from "react-hook-form";
+import { updateMeAction } from "../_services/actions";
+import toast from "react-hot-toast";
 
 interface editprofileFormInputs {
   name: string;
@@ -10,12 +12,37 @@ interface editprofileFormInputs {
   email: string;
 }
 
-export default function EditProfileForm() {
-  const { register, formState } = useForm<editprofileFormInputs>();
-  const { errors } = formState;
+export default function EditProfileForm({ curData }: { curData: any }) {
+  const { register, handleSubmit, formState } = useForm<editprofileFormInputs>({
+    defaultValues: curData,
+  });
+  const { errors, isSubmitting } = formState;
 
+  async function onSubmitFn(formData: any) {
+    const toastId = toast.loading("Updating your information...");
+
+    try {
+      const res = await updateMeAction(formData);
+
+      if (res?.status === "success") {
+        toast.success("Your Personal Information was updated successfully!", {
+          id: toastId,
+        });
+      } else {
+        toast.error(res?.message || "Failed to update profile", {
+          id: toastId,
+        });
+      }
+    } catch (err) {
+      console.log("Error: ", err);
+      toast.error("Something went wrong. Please try again later.", {
+        id: toastId,
+      });
+    }
+  }
+  
   return (
-    <form className="space-y-7">
+    <form className="space-y-7" onSubmit={handleSubmit(onSubmitFn)}>
       <div className="space-y-5">
         <FormRow
           {...register("name", {
@@ -60,7 +87,7 @@ export default function EditProfileForm() {
           placeholder="Enter your phone number"
         />
       </div>
-      <SubmitButton title="Save Changes" isLoading={false} />
+      <SubmitButton title="Save Changes" isLoading={isSubmitting} />
     </form>
   );
 }

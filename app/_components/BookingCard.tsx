@@ -4,12 +4,12 @@ import StatusLabel from "./StatusLabel";
 import BookingCardDetails from "./BookingCardDetails";
 
 export default function BookingCard({ booking }: { booking: any }) {
-  const { field, bookingDate, startTime, endTime, totalPrice, status } =
+  const { _id,field, bookingDate, startTime, endTime, totalPrice, status } =
     booking!;
   const { image, name } = field;
 
   return (
-    <div className="space-y-5 bg-white shadow rounded-2xl divide-y divide-gray-300">
+    <div className="space-y-5 bg-background shadow rounded-2xl divide-y divide-brand-border">
       <div className="flex flex-col gap-5 md:gap-0 md:flex-row justify-between p-7">
         <div className="flex flex-col md:flex-row gap-5">
           <Image
@@ -31,6 +31,7 @@ export default function BookingCard({ booking }: { booking: any }) {
         <StatusLabel label={status} />
       </div>
       <BookingCardFooter
+        bookingId={_id}
         totalPrice={totalPrice}
         fieldId={field._id}
         bookingStatus={status}

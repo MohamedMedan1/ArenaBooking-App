@@ -13,13 +13,13 @@ interface FieldResponse {
 export async function getFields(queryString?: any): Promise<Field[]> {
   try {
     let apiUrl =
-      "https://arenabooking-api-production.up.railway.app/api/v1/fields";
+      "https://arenabooking-api-production.up.railway.app/api/v1/fields?isActive=true";
     const queryKeys = Object.keys(queryString);
     const finalQuery = queryKeys
       .map((cur) => `${cur}=${queryString[cur]}`)
       .join("&");
 
-    apiUrl += finalQuery ? `?${finalQuery}` : finalQuery;
+    apiUrl += finalQuery;
 
     const res = await fetch(apiUrl);
 

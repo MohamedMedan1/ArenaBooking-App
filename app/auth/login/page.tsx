@@ -8,10 +8,14 @@ export default function Page() {
     <div className="space-y-10">
       <div className="text-center space-y-7">
         <CircleIcon />
-        <MainTitle title="Welcome Back" description="Sign in to continue booking" type="auth"/>
+        <MainTitle
+          title="Welcome Back"
+          description="Sign in to continue booking"
+          type="auth"
+        />
       </div>
       <div className="w-full md:w-md md:mx-auto ">
-        <LoginForm/>
+        <LoginForm />
       </div>
       <p className="text-center text-lg text-secondary">
         Don&apos;t have an account?{" "}

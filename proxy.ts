@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const token = request.cookies.get("jwt")?.value;
 
   const isProtectedRoute =
@@ -20,5 +20,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/bookings/:path*", "/settings/:path*", "/login"],
+  matcher: ["/bookings/:path*", "/settings/:path*", "/auth/login"],
 };

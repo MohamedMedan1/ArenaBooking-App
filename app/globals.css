@@ -17,6 +17,13 @@
   --color-dark-card: var(--dark-card);
   --color-line: var(--line);
   --color-brand-border: var(--border);
+
+  --color-dark-red: var(--dark-red);
+  --color-light-red: var(--light-red);
+  --color-dark-blue: var(--dark-blue);
+  --color-light-blue: var(--light-blue);
+  --color-dark-green: var(--dark-green);
+  --color-light-green: var(--light-green);
 }
 
 :root {
@@ -31,6 +38,12 @@
   --dark-card: #ececec;
   --line: #d9dbdb;
   --border: #d3d3d3;
+  --dark-red: #c71f1f;
+  --light-red: #ffabab;
+  --dark-blue: #0e49ea;
+  --light-blue: #a2c7ff;
+  --dark-green: #10b981;
+  --light-green: #95ffdc;
 }
 
 .dark {
@@ -45,6 +58,12 @@
   --dark-card: #040e21;
   --line: #0e1627;
   --border: #7c7b7b;
+  --dark-red: #ffabab;
+  --light-red: #c71f1f;
+  --dark-blue: #a2c7ff;
+  --light-blue: #0e49ea;
+  --dark-green: #bffbe7;
+  --light-green: #10b981;
 }
 
 html {

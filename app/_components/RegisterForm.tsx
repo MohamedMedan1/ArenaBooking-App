@@ -3,7 +3,14 @@ import { useForm } from "react-hook-form";
 import FormRow from "./FormRow";
 import SubmitButton from "./SubmitButton";
 import { signUpAction } from "../_services/actions";
-import { HiOutlineUser,HiOutlinePhone ,HiOutlineEnvelope, HiOutlineLockClosed } from "react-icons/hi2";
+import {
+  HiOutlineUser,
+  HiOutlinePhone,
+  HiOutlineEnvelope,
+  HiOutlineLockClosed,
+} from "react-icons/hi2";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 interface registerFormInputs {
   name: string;
@@ -14,13 +21,34 @@ interface registerFormInputs {
 }
 
 export default function RegisterForm() {
+  const router = useRouter();
   const { register, handleSubmit, formState, getValues } =
     useForm<registerFormInputs>();
   const { errors, isSubmitting } = formState;
 
-  async function onSubmitFn(data: any) {
-    const result = await signUpAction(data);
-    console.log(result);
+  async function onSubmitFn(formData: any) {
+    const toastId = toast.loading("Creating your account...");
+    try {
+      const res = await signUpAction(formData);
+
+      if (res?.status === "success") {
+        toast.success("Your new account successfully!", {
+          id: toastId,
+        });
+        setTimeout(() => {
+          router.push("/fields");
+        }, 1500);
+      } else {
+        toast.error(res?.message || "Failed to signup", {
+          id: toastId,
+        });
+      }
+    } catch (err) {
+      console.log("Error: ", err);
+      toast.error("Something went wrong. Please try again later.", {
+        id: toastId,
+      });
+    }
   }
 
   return (
@@ -37,7 +65,7 @@ export default function RegisterForm() {
           placeholder="Your name"
         />
         <FormRow
-          icon={<HiOutlinePhone  className="text-gray-500" size={18} />}
+          icon={<HiOutlinePhone className="text-gray-500" size={18} />}
           {...register("phone", {
             required: "This field is required",
             minLength: {
