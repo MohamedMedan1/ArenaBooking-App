@@ -1,7 +1,13 @@
 import ChangePasswordForm from "@/app/_components/ChangePasswordForm";
 import Container from "@/app/_components/Container";
 import PageHeader from "@/app/_components/PageHeader";
+import { Metadata } from "next";
 import { HiLockClosed } from "react-icons/hi2";
+
+export const metadata: Metadata = {
+  title: "Change Password",
+  description: "Update your security credentials.",
+};
 
 export default async function Page() {
   return (

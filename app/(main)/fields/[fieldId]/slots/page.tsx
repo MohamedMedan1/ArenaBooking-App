@@ -4,6 +4,12 @@ import Container from "@/app/_components/Container";
 import DateBox from "@/app/_components/DateBox";
 import TimeBox from "@/app/_components/TimeBox";
 import { getTimeSlots } from "@/app/_services/apiFields";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Available Slots",
+  description: "Check availability and pick the best time for your match.",
+};
 
 export default async function Page({
   params,

@@ -22,10 +22,27 @@ export async function getAllBookings() {
     const result = await res.json();
     if (!res.ok) throw new Error(result.message || "Failed to fetch bookings");
 
-    console.log(result.data);
     return result.data;
   } catch (err: any) {
     console.error("Error fetching Bookings:", err.message);
+    throw err; 
+  }
+}
+
+export async function getBooking(orderId:string) {
+  try {
+    const headers = await getAuthHeaders();
+    const res = await fetch(`${BASE_URL}/clients/me/bookings?paymobOrderId=${orderId}`, {
+      method: "GET",
+      headers,
+    });
+
+    const result = await res.json();
+    if (!res.ok) throw new Error(result.message || "Failed to fetch booking");
+
+    return result.data;
+  } catch (err: any) {
+    console.error("Error fetching Bookings", err.message);
     throw err; 
   }
 }

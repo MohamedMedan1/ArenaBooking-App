@@ -2,7 +2,13 @@ import Container from "@/app/_components/Container";
 import EditProfileForm from "@/app/_components/EditProfileForm";
 import PageHeader from "@/app/_components/PageHeader";
 import { getMe } from "@/app/_services/apiClients";
+import { Metadata } from "next";
 import { HiOutlineUserCircle } from "react-icons/hi2";
+
+export const metadata: Metadata = {
+  title: "Edit Profile",
+  description: "Update your personal information and profile details.",
+};
 
 export default async function Page() {
   const me = await getMe();

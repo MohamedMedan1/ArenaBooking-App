@@ -2,6 +2,12 @@ import BookingCard from "@/app/_components/BookingCard";
 import Container from "@/app/_components/Container";
 import PageHeader from "@/app/_components/PageHeader";
 import { getAllBookings } from "@/app/_services/apiBookings";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "My Bookings",
+  description: "View and manage your upcoming and past field reservations.",
+};
 
 export default async function Page() {
   const bookings = await getAllBookings();

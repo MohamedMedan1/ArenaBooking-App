@@ -2,11 +2,17 @@ import Container from "@/app/_components/Container";
 import DarkModeCard from "@/app/_components/DarkModeCard";
 import PageHeader from "@/app/_components/PageHeader";
 import SettingsCard from "@/app/_components/SettingsCard";
+import { Metadata } from "next";
 import {
   HiOutlineUser,
   HiMiniLockClosed,
   HiOutlineQuestionMarkCircle,
 } from "react-icons/hi2";
+
+export const metadata: Metadata = {
+  title: "Settings",
+  description: "Manage your account settings and preferences.",
+};
 
 export default async function Page() {
   const settings: any[] = [

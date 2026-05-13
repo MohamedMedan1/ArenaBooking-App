@@ -12,6 +12,12 @@ import {
 } from "react-icons/hi2";
 import DetailsCard from "@/app/_components/DetailsCard";
 import ConfirmBookingCard from "@/app/_components/ConfirmBookingCard";
+import { Metadata } from "next";
+
+export const metadata: Metadata= {
+  title: "Field Details",
+  description: "View detailed information about this sports field.",
+};
 
 export default async function Page({
   params,

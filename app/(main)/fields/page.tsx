@@ -5,6 +5,12 @@ import FieldCard from "../../_components/FieldCard";
 import Filter from "../../_components/Filter";
 import { getCategories } from "../../_services/apiCategories";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "All Fields",
+  description: "Browse the list of available sports fields, compare prices, and check facilities.",
+};
 
 export default async function Page({
   searchParams,

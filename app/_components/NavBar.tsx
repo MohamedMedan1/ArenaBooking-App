@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import Button from "./Button";
+import { getToken } from '../_utils/getToken';
 
-export default function NavBar() {
+export default async function NavBar() {
+  const token = await getToken();
+  const isLogin = token;
+
   return (
     <nav className="hidden md:flex items-center gap-6 lg:gap-12">
       <ul className="flex items-center gap-5 lg:gap-10">
@@ -9,9 +13,10 @@ export default function NavBar() {
         <Link href="#howItWorks"><li className="font-medium text-secondary cursor-pointer hover:text-brand-green">How It Works</li></Link>
         <Link href="#fields"><li className="font-medium text-secondary cursor-pointer hover:text-brand-green">Fields</li></Link>
         <Link href="#about"><li className="font-medium text-secondary cursor-pointer hover:text-brand-green">About</li></Link>
+        {isLogin && <Link href="/settings"><li className="font-medium text-secondary cursor-pointer hover:text-brand-green">Settings</li></Link>}
         
       </ul>
-      <div className="flex items-center gap-4 lg:gap-8">
+      {!isLogin && <div className="flex items-center gap-4 lg:gap-8">
         <Button
           type="bordered"
           title="Sign In"
@@ -23,6 +28,7 @@ export default function NavBar() {
           additionalStyles="border-none bg-brand-green text-primary !w-28 !p-1.5 !justify-center"
         />
       </div>
+}
     </nav>
   );
 }
