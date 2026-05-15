@@ -40,7 +40,7 @@ export async function getBooking(order:string) {
     const result = await res.json();
     if (!res.ok) throw new Error(result.message || "Failed to fetch booking");
 
-    return result.data;
+    return result.data[0];
   } catch (err: any) {
     console.error("Error fetching Bookings", err.message);
     throw err; 
