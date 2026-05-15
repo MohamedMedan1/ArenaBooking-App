@@ -29,10 +29,10 @@ export async function getAllBookings() {
   }
 }
 
-export async function getBooking(orderId:string) {
+export async function getBooking(order:string) {
   try {
     const headers = await getAuthHeaders();
-    const res = await fetch(`${BASE_URL}/clients/me/bookings?paymobOrderId=${orderId}`, {
+    const res = await fetch(`${BASE_URL}/clients/me/bookings?paymobOrderId=${order}`, {
       method: "GET",
       headers,
     });

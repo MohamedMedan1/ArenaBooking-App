@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   description: "Your booking has been successfully placed. See you on the field!",
 };
 
-export default async function Page({ searchParams }: { searchParams: Promise<{ orderId: string }>; }) {
-  const { orderId } = await searchParams;
-  const booking = await getBooking(orderId);
+export default async function Page({ searchParams }: { searchParams: Promise<{ order: string }>; }) {
+  const {order} = await searchParams;
+  const booking = await getBooking(order);
 
   if (!booking) {
     return <div>Booking not found or still processing...</div>;
