@@ -25,17 +25,20 @@ export async function getAllBookings() {
     return result.data;
   } catch (err: any) {
     console.error("Error fetching Bookings:", err.message);
-    throw err; 
+    throw err;
   }
 }
 
-export async function getBooking(order:string) {
+export async function getBooking(order: string) {
   try {
     const headers = await getAuthHeaders();
-    const res = await fetch(`${BASE_URL}/clients/me/bookings?paymobOrderId=${order}`, {
-      method: "GET",
-      headers,
-    });
+    const res = await fetch(
+      `${BASE_URL}/clients/me/bookings?paymobOrderId=${order}`,
+      {
+        method: "GET",
+        headers,
+      },
+    );
 
     const result = await res.json();
     if (!res.ok) throw new Error(result.message || "Failed to fetch booking");
@@ -43,11 +46,13 @@ export async function getBooking(order:string) {
     return result.data[0];
   } catch (err: any) {
     console.error("Error fetching Bookings", err.message);
-    throw err; 
+    throw err;
   }
 }
-
-export async function createNewBooking(reqData: { fieldId: string; bookingData: any }) {
+export async function createNewBooking(reqData: {
+  fieldId: string;
+  bookingData: any;
+}) {
   const { fieldId, bookingData } = reqData;
   try {
     const headers = await getAuthHeaders();
@@ -74,10 +79,13 @@ export async function createNewBooking(reqData: { fieldId: string; bookingData: 
 export async function cancelBooking(bookingId: string) {
   try {
     const headers = await getAuthHeaders();
-    const res = await fetch(`${BASE_URL}/clients/me/bookings/${bookingId}/cancel`, {
-      method: "PATCH",
-      headers,
-    });
+    const res = await fetch(
+      `${BASE_URL}/clients/me/bookings/${bookingId}/cancel`,
+      {
+        method: "PATCH",
+        headers,
+      },
+    );
 
     const result = await res.json();
     if (!res.ok) throw new Error(result.message || "Failed to cancel booking");

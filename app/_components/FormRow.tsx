@@ -41,26 +41,26 @@ export default function FormRow({
     <div className="flex flex-col gap-2">
       <label
         htmlFor={`${labelName}-${inputType}`}
-        className="font-semibold text-primary"
+        className="font-bold text-xs uppercase tracking-widest text-slate-300"
       >
         {labelName}
       </label>
-      <div className="relative">
-        <span className="absolute top-1/2 -translate-y-1/2 left-3">{icon}</span>
+      <div className="relative group">
+        <span className="absolute top-1/2 -translate-y-1/2 left-4 text-slate-400 group-focus-within:text-primary transition-colors">{icon}</span>
         <input
           {...registerProps}
           id={`${labelName}-${inputType}`}
           type={isVisible?"text":inputType}
           placeholder={placeholder}
-          className="w-full bg-background border-[0.5px] font-medium text-primary border-brand-border rounded-lg px-10 py-3 placeholder:text-sm placeholder:text-secondary placeholder:font-medium"
+          className="w-full bg-secondary-dark/50 border border-border-alpha font-medium text-foreground rounded-xl px-12 py-4 placeholder:text-sm placeholder:text-slate-500 placeholder:font-medium focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
         />
         {isPasswordType && (
-          <span className="absolute top-1/2 -translate-y-1/2 right-3">
+          <span className="absolute top-1/2 -translate-y-1/2 right-4">
             {visibleIcon}
           </span>
         )}
       </div>
-      {error && <span className="text-red-500">{error}</span>}
+      {error && <span className="text-red-500 text-xs font-bold mt-1">{error}</span>}
     </div>
   );
 }

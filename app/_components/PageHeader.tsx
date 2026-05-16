@@ -3,14 +3,17 @@ import Container from "./Container";
 
 export default function PageHeader({ title }: { title: string }) {
   return (
-    <div className="bg-linear-to-br from-[#10B981] to-[#1E3A8A] py-15">
+    <div className="bg-background border-b border-border-alpha py-12 relative overflow-hidden">
+      {/* Subtle ambient glow */}
+      <div className="absolute top-[-50px] left-1/4 w-[300px] h-[300px] bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
+      
       <Container>
-        <div className="flex items-center gap-7">
+        <div className="flex items-center gap-7 relative z-10">
           <BackBtn fixed={true} />
           <div>
-            <p className="text-white text-3xl md:text-4xl font-bold mb-2">
+            <h1 className="text-foreground text-4xl md:text-5xl font-black italic tracking-tighter uppercase">
               {title}
-            </p>
+            </h1>
           </div>
         </div>
       </Container>

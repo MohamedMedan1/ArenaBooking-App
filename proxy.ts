@@ -6,13 +6,18 @@ export function proxy(request: NextRequest) {
 
   const isProtectedRoute =
     request.nextUrl.pathname.startsWith("/bookings") ||
-    request.nextUrl.pathname.startsWith("/settings");
+    request.nextUrl.pathname.startsWith("/settings") ||
+    request.nextUrl.pathname.includes("/slots");
+
+  const isAuthRoute = 
+    request.nextUrl.pathname.startsWith("/auth/login") || 
+    request.nextUrl.pathname.startsWith("/auth/register");
 
   if (isProtectedRoute && !token) {
     return NextResponse.redirect(new URL("/auth/login", request.url));
   }
 
-  if (request.nextUrl.pathname === "/auth/login" && token) {
+  if (isAuthRoute && token) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
@@ -20,5 +25,10 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/bookings/:path*", "/settings/:path*", "/auth/login"],
+  matcher: [
+    "/bookings/:path*", 
+    "/settings/:path*", 
+    "/fields/:id/slots/:path*",
+    "/auth/:path*"
+  ],
 };

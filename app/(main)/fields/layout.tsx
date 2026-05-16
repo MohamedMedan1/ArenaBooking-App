@@ -1,7 +1,7 @@
-export default function FieldsLayout({children}: {children: React.ReactNode;}) {
-  return (
-    <section>
-      {children}
-    </section>
-  );
+export default function FieldsLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <section>{children}</section>;
 }

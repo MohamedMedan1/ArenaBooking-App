@@ -31,7 +31,7 @@ export function ThemeProvider({ children }: ThemeProvideType) {
         return saved;
       }
     }
-    return "light";
+    return "dark";
   });
 
   useEffect(() => {

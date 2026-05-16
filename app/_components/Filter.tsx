@@ -26,13 +26,14 @@ export default function Filter({
 
     replace(`${pathname}?${params.toString()}`, { scroll: false });
   }
-  
-  const baseStyles = "px-6 py-1.5 cursor-pointer font-semibold transition rounded-full";
+
+  const baseStyles =
+    "px-6 py-1.5 cursor-pointer font-semibold transition rounded-full";
   const activeStyles = "text-white bg-brand-green";
   const idleStyles = "text-secondary hover:bg-background";
 
-  const category = searchParams.get(filterKey) || "all"; 
-  
+  const category = searchParams.get(filterKey) || "all";
+
   return (
     <div className="flex flex-col gap-5">
       <div className="flex items-center gap-2">
@@ -42,7 +43,7 @@ export default function Filter({
 
       <ul className="flex flex-wrap items-center gap-5">
         <li
-          className={`${baseStyles} ${category=== "all"? activeStyles:idleStyles } `}
+          className={`${baseStyles} ${category === "all" ? activeStyles : idleStyles} `}
           onClick={() => handleFilter("all")}
         >
           All
@@ -50,7 +51,7 @@ export default function Filter({
         {filterItems?.map((cur) => (
           <li
             key={cur._id}
-            className={`${baseStyles} ${category === cur._id ? activeStyles:idleStyles}`}
+            className={`${baseStyles} ${category === cur._id ? activeStyles : idleStyles}`}
             onClick={() => handleFilter(cur._id)}
           >
             {cur.name}
