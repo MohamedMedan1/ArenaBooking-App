@@ -28,7 +28,7 @@ export default async function Page({
         <div className="space-y-5 flex flex-col items-center">
           <HiMiniCheckCircle
             size={120}
-            className="text-brand-green text-center"
+            className="text-brand-green  text-center"
           />
           <MainTitle
             title="Booking Confirmed!"

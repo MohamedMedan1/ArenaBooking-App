@@ -86,7 +86,7 @@ export const Header = ({ isAuth }: { isAuth?: boolean }) => {
             </div>
 
             <span className="text-xl font-black tracking-tight uppercase">
-              Mala3bak
+              Mala3bek
             </span>
           </Link>
           {/* Desktop Menu */}
@@ -125,13 +125,17 @@ export const Header = ({ isAuth }: { isAuth?: boolean }) => {
                   { name: "Fields", href: "/fields" },
                   { name: "Settings", href: "/settings" },
                 ].map((item) => {
-                  const isActive = pathname === item.href || (item.href !== "/" && pathname?.startsWith(item.href));
+                  const isActive =
+                    pathname === item.href ||
+                    (item.href !== "/" && pathname?.startsWith(item.href));
                   return (
                     <Link
                       key={item.name}
                       href={item.href}
                       className={`text-sm font-medium uppercase tracking-widest transition-colors relative group py-1 ${
-                        isActive ? "text-primary" : "text-foreground/70 hover:text-primary"
+                        isActive
+                          ? "text-primary"
+                          : "text-foreground/70 hover:text-primary"
                       }`}
                     >
                       {item.name}
