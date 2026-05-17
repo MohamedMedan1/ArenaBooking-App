@@ -52,10 +52,10 @@ export default function BookingConfirmationCard({ booking }: { booking: any }) {
   const formatedTime = formatTime(startTime, endTime);
 
   return (
-    <div className="w-full mt-8 rounded-[28px] border border-brand-border bg-foreground dark:bg-foreground/5 dark:backdrop-blur-md p-7 divide-y divide-brand-border space-y-6 shadow-sm">
+    <div className="w-full mt-8 rounded-[28px] border border-white/10 bg-white dark:bg-white/5 p-7 divide-y divide-white/10 space-y-6 shadow-sm">
       {/* Booking Number */}
       <div className="space-y-1 text-center pb-5">
-        <p className="text-xs font-bold uppercase tracking-widest text-secondary">
+        <p className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">
           Booking Number
         </p>
         <p className="text-brand-green font-extrabold text-2xl tracking-tight">
@@ -73,10 +73,10 @@ export default function BookingConfirmationCard({ booking }: { booking: any }) {
             </span>
           </div>
           <div>
-            <p className="text-foreground font-bold text-lg leading-tight">
+            <p className="text-gray-900 dark:text-white font-bold text-lg leading-tight">
               {field.name}
             </p>
-            <span className="text-secondary text-sm">
+            <span className="text-gray-500 dark:text-gray-400 text-sm">
               {field.category?.name}
             </span>
           </div>
@@ -85,28 +85,30 @@ export default function BookingConfirmationCard({ booking }: { booking: any }) {
         {/* Details */}
         <ul className="space-y-4">
           <li>
-            <span className="text-secondary text-xs font-bold uppercase tracking-widest">
+            <span className="text-gray-400 dark:text-gray-500 text-xs font-bold uppercase tracking-widest">
               Date
             </span>
-            <p className="font-semibold text-foreground mt-0.5">
+            <p className="font-semibold text-gray-900 dark:text-white mt-0.5">
               {formatedData}
             </p>
           </li>
           <li>
-            <span className="text-secondary text-xs font-bold uppercase tracking-widest">
+            <span className="text-gray-400 dark:text-gray-500 text-xs font-bold uppercase tracking-widest">
               Time
             </span>
-            <p className="font-semibold text-foreground mt-0.5">
+            <p className="font-semibold text-gray-900 dark:text-white mt-0.5">
               {formatedTime}
             </p>
           </li>
           <li>
-            <span className="text-secondary text-xs font-bold uppercase tracking-widest">
+            <span className="text-gray-400 dark:text-gray-500 text-xs font-bold uppercase tracking-widest">
               Price
             </span>
-            <p className="font-extrabold text-brand-green text-xl mt-0.5">
-              ${field.pricePerHour}
-              <span className="text-xs text-secondary font-bold ml-1">
+            <p className="mt-0.5">
+              <span className="text-brand-green font-extrabold text-xl">
+                ${field.pricePerHour}
+              </span>
+              <span className="text-gray-400 dark:text-gray-500 text-xs font-bold ml-1">
                 / hour
               </span>
             </p>
