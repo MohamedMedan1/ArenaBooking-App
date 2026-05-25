@@ -62,7 +62,7 @@ export default function FieldDetails({
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans flex flex-col overflow-hidden relative selection:bg-primary selection:text-primary-foreground">
+    <div className="min-h-screen pt-10 bg-background text-foreground font-sans flex flex-col overflow-hidden relative selection:bg-primary selection:text-primary-foreground">
       {/* Background Ambient Glows */}
       <div className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-accent/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />

@@ -14,7 +14,10 @@ export default function BookingCardFooter({totalPrice,fieldId,bookingStatus,book
     try {
       setIsPending(true);
 
-      await cancelBookingAction(bookingId);
+      const res = await cancelBookingAction(bookingId);
+      if (res?.success === false) {
+        throw new Error(res.message);
+      }
       toast.success("Booking canceled successfully!", { id: toastId });
       
     } catch (err: any) {

@@ -32,7 +32,10 @@ export const BookingCard: FC<BookingCardProps> = ({ booking, index }) => {
     const toastId = toast.loading("Canceling your booking...");
     try {
       setIsPending(true);
-      await cancelBookingAction(booking.id);
+      const res = await cancelBookingAction(booking.id);
+      if (res?.success === false) {
+        throw new Error(res.message);
+      }
       toast.success("Booking canceled successfully!", { id: toastId });
     } catch (err: any) {
       toast.error(err.message || "Failed to cancel booking", { id: toastId });

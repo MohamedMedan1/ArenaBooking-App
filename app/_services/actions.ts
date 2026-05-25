@@ -1,4 +1,5 @@
 "use server"
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { cancelBooking, createNewBooking } from "../_services/apiBookings";
 import { changePassword, login, register, updateMe } from "./apiClients"
@@ -46,5 +47,11 @@ export async function createBookingAction(formData: any) {
 }
 
 export async function cancelBookingAction(fieldId:any) {
-  await cancelBooking(fieldId);
-} 
+  try {
+    await cancelBooking(fieldId);
+    revalidatePath("/bookings");
+    return { success: true };
+  } catch (err: any) {
+    return { success: false, message: err.message || "Failed to cancel booking" };
+  }
+}
