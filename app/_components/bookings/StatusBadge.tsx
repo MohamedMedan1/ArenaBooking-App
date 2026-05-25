@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 
-export type BookingStatus = "confirmed" | "pending" | "cancelled" | "completed";
+export type BookingStatus = "confirmed" | "pending" | "cancelled" | "canceled" | "completed" | string;
 
 interface StatusBadgeProps {
   status: BookingStatus;
@@ -29,6 +29,13 @@ export const StatusBadge = ({ status }: StatusBadgeProps) => {
       dot: "bg-red-500",
       label: "Cancelled",
     },
+    canceled: {
+      bg: "bg-red-500/10",
+      text: "text-red-400",
+      border: "border-red-500/20",
+      dot: "bg-red-500",
+      label: "Cancelled",
+    },
     completed: {
       bg: "bg-accent/10",
       text: "text-accent",
@@ -38,7 +45,13 @@ export const StatusBadge = ({ status }: StatusBadgeProps) => {
     },
   };
 
-  const current = styles[status];
+  const current = styles[status as keyof typeof styles] || {
+    bg: "bg-foreground/5",
+    text: "text-foreground/70",
+    border: "border-border-alpha",
+    dot: "bg-foreground/50",
+    label: status || "Unknown",
+  };
 
   return (
     <motion.div

@@ -9,8 +9,15 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const bookings = await getAllBookings();
-  const filteredBookings = bookings?.filter((cur: any) => cur.field !== null) || [];
+  let bookings = [];
+  try {
+    bookings = await getAllBookings() || [];
+  } catch (error) {
+    console.error("Failed to load bookings:", error);
+    // Continue with empty bookings array
+  }
+
+  const filteredBookings = bookings.filter((cur: any) => cur.field !== null);
   
   const formattedBookings: BookingData[] = filteredBookings.map((b: any) => ({
     id: b._id,
