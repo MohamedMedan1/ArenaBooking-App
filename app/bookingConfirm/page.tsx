@@ -40,7 +40,7 @@ export default async function Page({
         <div className="mt-8 flex justify-center">
           <Link 
             href="/bookings"
-            className="px-8 py-3 bg-brand-green text-black text-sm font-bold uppercase tracking-widest rounded-xl hover:bg-primary transition-all shadow-xl hover:scale-105 active:scale-95 block text-center hover:text-primary-foreground"
+            className="px-8 py-3 bg-primary text-primary-foreground text-sm font-bold uppercase tracking-widest rounded-xl hover:brightness-110 transition-all shadow-xl hover:scale-105 active:scale-95 block text-center"
           >
             View My Bookings
           </Link>
