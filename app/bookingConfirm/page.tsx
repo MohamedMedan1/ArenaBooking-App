@@ -3,6 +3,7 @@ import MainTitle from "../_components/MainTitle";
 import { HiMiniCheckCircle } from "react-icons/hi2";
 import { getBooking } from "../_services/apiBookings";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Booking Confirmed",
@@ -23,7 +24,7 @@ export default async function Page({
   }
 
   return (
-    <div className="min-h-lvh py-10 bg-background">
+    <div className="min-h-lvh py-10 px-6 md:px-8 bg-background">
       <div className="w-full md:w-1/2 mx-auto">
         <div className="space-y-5 flex flex-col items-center">
           <HiMiniCheckCircle
@@ -36,6 +37,14 @@ export default async function Page({
           />
         </div>
         <BookingConfirmationCard booking={booking} />
+        <div className="mt-8 flex justify-center">
+          <Link 
+            href="/bookings"
+            className="px-8 py-3 bg-brand-green text-black text-sm font-bold uppercase tracking-widest rounded-xl hover:bg-primary transition-all shadow-xl hover:scale-105 active:scale-95 block text-center hover:text-primary-foreground"
+          >
+            View My Bookings
+          </Link>
+        </div>
       </div>
     </div>
   );

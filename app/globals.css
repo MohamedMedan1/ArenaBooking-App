@@ -293,3 +293,7 @@ html {
   scrollbar-width: thin;
   scrollbar-color: var(--primary) var(--secondary);
 }
+
+button {
+  cursor: pointer;
+}

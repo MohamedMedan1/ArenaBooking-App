@@ -4,12 +4,12 @@ export default function MainTitle({title,description,customStyles,type="main"}:{
     main: {
       box: "space-y-4 mb-15",
       title:"text-4xl lg:text-5xl text-primary",
-      desc:"text-xl text-secondary",
+      desc:"text-xl text-foreground/70",
     },
     auth:{
       box: "space-y-2 my-7",
       title:"text-4xl lg:text-4xl text-primary",
-      desc:"text-lg text-secondary",
+      desc:"text-lg text-foreground/70",
     },
   }
 
