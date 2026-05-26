@@ -121,12 +121,12 @@ export default function BookingSlotsClient({ field }: { field: any }) {
   return (
     <div className="min-h-screen bg-background text-foreground p-4 md:p-8 font-sans selection:bg-primary selection:text-primary-foreground">
       <div className="mb-6 relative z-30">
-        <Link
-          href={`/fields/${field._id}`}
+        <button
+          onClick={() => router.back()}
           className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-foreground/5 border border-border-alpha text-foreground/60 hover:text-primary hover:bg-foreground/10 hover:border-primary/30 transition-all duration-300"
         >
           <ChevronLeft className="w-6 h-6" />
-        </Link>
+        </button>
       </div>
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8">
         {/* Main Content Area */}

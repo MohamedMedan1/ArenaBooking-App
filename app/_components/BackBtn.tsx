@@ -1,6 +1,6 @@
 "use client"
 import { useRouter } from "next/navigation";
-import { HiArrowLeft } from "react-icons/hi2";
+import { ChevronLeft } from "lucide-react";
 
 export default function BackBtn({ fixed = false }: { fixed?: boolean }) {
   const router = useRouter();
@@ -10,9 +10,9 @@ export default function BackBtn({ fixed = false }: { fixed?: boolean }) {
       onClick={() => router.back()}
       className={`${
         fixed ? "" : "absolute top-10 left-10 z-20 "
-      } cursor-pointer bg-white/90 hover:bg-white transition rounded-xl w-12 h-12 flex items-center justify-center border-none`}
+      } inline-flex items-center justify-center w-12 h-12 rounded-xl bg-foreground/5 border border-border-alpha text-foreground/60 hover:text-primary hover:bg-foreground/10 hover:border-primary/30 transition-all duration-300`}
     >
-      <HiArrowLeft size={25} />
+      <ChevronLeft className="w-6 h-6" />
     </button>
   );
 }
