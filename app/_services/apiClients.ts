@@ -35,8 +35,9 @@ export async function register(clientData: any) {
     }
 
     return result;
-  } catch (err) {
-    console.error("Error fetching categories:", err);
+  } catch (err: any) {
+    console.error("Error registering:", err.message);
+    return { status: "error", message: err.message };
   }
 }
 
@@ -75,8 +76,9 @@ export async function login(clientData: any) {
     }
 
     return result;
-  } catch (err) {
-    console.error("Error fetching categories:", err);
+  } catch (err: any) {
+    console.error("Error logging in:", err.message);
+    return { status: "error", message: err.message };
   }
 }
 
@@ -107,9 +109,9 @@ export async function getMe() {
 
     const {data} = await res.json();
     return data;
-  } catch (err) {
-    console.error("Error fetching my data:", err);
-    return err
+  } catch (err: any) {
+    console.error("Error fetching my data:", err.message);
+    return { status: "error", message: err.message };
   }
 }
 
@@ -141,9 +143,9 @@ export async function updateMe(clientData:any) {
 
     const result = await res.json();
     return result;
-  } catch (err) {
-    console.error("Error udpating data:", err);
-    return err;
+  } catch (err: any) {
+    console.error("Error updating data:", err.message);
+    return { status: "error", message: err.message };
   }
 }
 
@@ -175,9 +177,9 @@ export async function changePassword(clientData:any) {
 
     const result = await res.json();
     return result;
-  } catch (err) {
-    console.error("Error while changing password:", err);
-    return err;
+  } catch (err: any) {
+    console.error("Error while changing password:", err.message);
+    return { status: "error", message: err.message };
   }
 }
 
