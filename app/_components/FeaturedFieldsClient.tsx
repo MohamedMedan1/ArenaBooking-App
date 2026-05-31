@@ -44,7 +44,7 @@ export default function FeaturedFieldsClient({ fields }: Props) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {fields?.map((field, index) => (
+            {fields?.slice(0, 4).map((field, index) => (
               <motion.div
                 key={field._id}
                 initial={{ opacity: 0, y: 30 }}
