@@ -2,8 +2,8 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { cancelBooking, createNewBooking } from "../_services/apiBookings";
-import { changePassword, login, register, updateMe } from "./apiClients"
-
+import { changePassword, login, register, updateMe } from "./apiClients";
+import { logout } from "../_utils/authActions";
 export async function signUpAction(formData:any) {
   const result = await register(formData);
   return result;
@@ -38,6 +38,14 @@ export async function createBookingAction(formData: any) {
       throw new Error("Payment URL not found");
     }
   } catch (err:any) {
+    if (
+      err.message === "There is no user with that Id" ||
+      err.message.includes("Unauthorized") ||
+      err.message.includes("token")
+    ) {
+      await logout();
+      redirect("/login");
+    }
     throw new Error(err.message || "Failed to create booking");
   }
 
@@ -52,6 +60,14 @@ export async function cancelBookingAction(fieldId:any) {
     revalidatePath("/bookings");
     return { success: true };
   } catch (err: any) {
+    if (
+      err.message === "There is no user with that Id" ||
+      err.message.includes("Unauthorized") ||
+      err.message.includes("token")
+    ) {
+      await logout();
+      redirect("/login");
+    }
     return { success: false, message: err.message || "Failed to cancel booking" };
   }
 }

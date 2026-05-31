@@ -1,4 +1,6 @@
+
 import BookingConfirmationCard from "../_components/BookingConfirmationCard";
+
 import MainTitle from "../_components/MainTitle";
 import { HiMiniCheckCircle } from "react-icons/hi2";
 import { getBooking } from "../_services/apiBookings";
