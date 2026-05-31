@@ -163,12 +163,21 @@ export default function RegisterForm() {
                       required: "This field is required",
                       minLength: { value: 8, message: "At least 8 characters" },
                       maxLength: { value: 16, message: "At most 16 characters" },
+                      pattern: {
+                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{8,}$/,
+                        message: "Must contain uppercase, lowercase, number, & special character (e.g., Test@123)",
+                      },
                     })}
                     placeholder="••••••••"
                     className="w-full h-12 rounded-2xl bg-white/5 border border-white/10 px-4 text-white placeholder:text-white/20 backdrop-blur-md outline-none transition-all focus:bg-white/10 focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/10"
                   />
+                  {!errors.password && (
+                    <p className="text-[10px] text-white/40 ml-1 leading-relaxed">
+                      Requires: 1 uppercase, 1 lowercase, 1 number, and 1 special character (e.g., Test@123).
+                    </p>
+                  )}
                   {errors.password && (
-                    <p className="text-red-400 text-[10px] ml-1">
+                    <p className="text-red-400 text-[10px] ml-1 leading-relaxed">
                       {errors.password.message}
                     </p>
                   )}
