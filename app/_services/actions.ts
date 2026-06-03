@@ -46,7 +46,7 @@ export async function createBookingAction(formData: any) {
       await logout();
       redirect("/login");
     }
-    throw new Error(err.message || "Failed to create booking");
+    return { success: false, message: err.message || "Failed to create booking" };
   }
 
   if (paymentUrl) {

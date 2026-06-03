@@ -63,7 +63,7 @@ export default function BookingSlotsClient({ field }: { field: any }) {
     isAvailable: !t.isBooked,
     type: getPeriod(t.startTime),
     rawStartTime: t.startTime,
-    rawEndTime: t.endTime,
+    rawEndTime: t.endTime === "00:00" ? "23:59" : t.endTime,
   }));
 
   const activeSlot = SLOTS.find((s: any) => s.id === selectedSlotId);
@@ -82,7 +82,10 @@ export default function BookingSlotsClient({ field }: { field: any }) {
         },
       };
       setIsPending(true);
-      await createBookingAction(reqData);
+      const res = await createBookingAction(reqData);
+      if (res && res.success === false) {
+        throw new Error(res.message);
+      }
       toast.success("Booking confirmed!", { id: toastId });
       router.push(`/fields/${field._id}`);
     } catch (err: any) {

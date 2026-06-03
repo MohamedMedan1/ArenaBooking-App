@@ -14,6 +14,9 @@ export default async function Page({
 }) {
   const { fieldId } = await params;
   const field = await getTimeSlots(fieldId!);
+  if (!field) {
+    return <div className="min-h-screen bg-background flex items-center justify-center text-foreground font-sans text-xl tracking-widest font-black uppercase">Field not found</div>;
+  }
 
   return <BookingSlotsClient field={field} />;
 }
